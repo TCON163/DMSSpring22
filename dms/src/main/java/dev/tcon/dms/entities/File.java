@@ -36,7 +36,7 @@ public class File {
 
     @Lob
     @JsonIgnore
-    private byte [] data;
+    private byte[] data;
 
 
 

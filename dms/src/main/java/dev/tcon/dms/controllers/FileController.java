@@ -6,6 +6,7 @@ import dev.tcon.dms.DTO.ResponseMessage;
 import dev.tcon.dms.entities.File;
 import dev.tcon.dms.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,16 +30,21 @@ public class FileController {
 
     @CrossOrigin
     @GetMapping("/file/{id}")
-    public ResponseEntity<DataDTO> getFileById(@PathVariable Long id){
-        return ResponseEntity.ok(fileService.getFile(id));
+    public ResponseEntity<byte[]> getFileById(@PathVariable Long id){
+
+        File file = fileService.getFile(id);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
+                .header(HttpHeaders.CONTENT_TYPE, file.getFileType())
+                .body(file.getData());
     }
 
     @CrossOrigin
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@RequestBody FileDTO file){
         try{
-            fileService.storeFile(file);
-            return ResponseEntity.ok("file uploaded");
+
+            return ResponseEntity.ok(fileService.storeFile(file));
         }catch (IOException exception){
             return ResponseEntity.badRequest().body(new ResponseMessage("Unable to upload file"));
         }

@@ -78,15 +78,14 @@ export default function FileUploadPage(){
     }
 
     const download =()=>{
-        fetch("http://localhost:8080/api/v1/file/1").then(response => response.json())
+        fetch("http://localhost:8080/api/v1/file/1").then(response => response.blob())
         .then(data=>{
-            let array = new Array(data.data);
-            let file = new File(array, data.filename,{'type':data.fileExtension});
-            const url = window.URL.createObjectURL(file);
+  
+            const url = window.URL.createObjectURL(data);
             const a = document.createElement('a');
             a.style.display = 'none';
             a.href = url;
-            a.download = data.filename;
+            a.download = "pdf.pdf";
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
@@ -123,6 +122,8 @@ export default function FileUploadPage(){
                 <br/>
                 <br/>
                 <button onClick={download}>download</button>
+
+                <a href='http://localhost:8080/api/v1/file/1' download id="download">download 2</a>
 			</div>
 		</div>
 	);

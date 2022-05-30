@@ -32,14 +32,14 @@ public class FileService {
 
 
 
-    public void storeFile(FileDTO fileDTO) throws IOException{
+    public File storeFile(FileDTO fileDTO) throws IOException{
         File newFile = new File();
 
         newFile.setFileName(fileDTO.getFileName());
         newFile.setFileType(fileDTO.getFileType());
         newFile.setData(fileDTO.getData());
 
-        fileRepo.save(newFile);
+        return  fileRepo.save(newFile);
 
 
 
@@ -53,16 +53,11 @@ public class FileService {
 
 
 
-    public DataDTO getFile(Long id){
+    public File getFile(Long id){
 
 
-        File file =  fileRepo.getById(id);
+        return fileRepo.getById(id);
 
-        DataDTO data = new DataDTO();
-        data.setFileExtension(file.getFileType());
-        data.setFilename(file.getFileName());
-        data.setData(file.getData());
 
-        return data;
     }
 }
