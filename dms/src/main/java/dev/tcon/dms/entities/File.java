@@ -1,5 +1,6 @@
 package dev.tcon.dms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,13 +34,11 @@ public class File {
     @Column(name = "subfolder")
     private String subfolder;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @MapsId
-    private DataFile dataFile;
+    @Lob
+    @JsonIgnore
+    private byte [] data;
 
-    @ManyToOne
-    @JoinColumn(name = "submissionFolderId", nullable = false)
-    private SubmissionFolder submissionFolder;
+
 
 
 
