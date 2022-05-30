@@ -2,6 +2,11 @@
 *.class
 *.properties
 # Log file
+
+
+/.vscode/
+/node_module
+
 *.log
 
 /.idea/
