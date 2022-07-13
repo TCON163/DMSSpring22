@@ -1,0 +1,11 @@
+@GetMapping("/customer")
+    public ResponseEntity<List<Customer>> getAll(){return ResponseEntity.ok(customerService.getAll());}
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<Customer> getById(@PathVariable Long id){
+        return ResponseEntity.ok(customerService.getById(id));
+    }
+    
+    @PostMapping("/customer")
+    public ResponseEntity<Customer> getById(@RequestBody Customer customer){
+        return ResponseEntity.ok(customerService.create(customer));
+    }

@@ -1,5 +1,6 @@
 package dev.tcon.dms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.tcon.dms.enums.LineOfBusiness;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +25,11 @@ public class Submission {
 
     @ManyToOne
     @JoinColumn(name = "customer_id",nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Customer customer;
 
     @ManyToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Agency agency;
 
 

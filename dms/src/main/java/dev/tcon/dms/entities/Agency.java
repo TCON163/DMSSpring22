@@ -1,5 +1,7 @@
 package dev.tcon.dms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,11 +27,11 @@ public class Agency {
     private Long phoneNumber;
 
 
-    @ManyToMany
-    private Set<Customer> customers = new HashSet<>();
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mail_address_id", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Address mailAddress;
 
     @Column
@@ -37,6 +39,7 @@ public class Agency {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "physical_address_id", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Address physicalAddress;
 
     @OneToMany(mappedBy = "agency")
@@ -47,5 +50,6 @@ public class Agency {
     private Agent headAgent;
 
     @OneToMany(mappedBy = "agency")
+    @JsonIgnore
     private Set<Submission> submissions = new HashSet<>();
 }

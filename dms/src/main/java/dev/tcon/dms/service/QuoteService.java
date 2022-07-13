@@ -5,6 +5,8 @@ import dev.tcon.dms.repo.QuoteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class QuoteService {
 
@@ -17,5 +19,11 @@ public class QuoteService {
 
     public Quote create(Quote quote){
         return quoteRepo.save(quote);
+    }
+
+    public List<Quote> getAll(){return quoteRepo.findAll();    }
+
+    public Quote getById(Long id){
+        return quoteRepo.getById(id);
     }
 }
