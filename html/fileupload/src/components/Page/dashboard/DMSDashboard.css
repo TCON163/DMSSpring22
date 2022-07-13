@@ -1,0 +1,43 @@
+.grid {
+    position: fixed;
+    top: 50px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 100%;
+    display: grid;
+   
+}
+
+
+
+.one {
+    
+    border: 5px red solid;
+    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 5% 95%;
+
+}
+
+.two {
+    border: 5px purple solid;
+}
+
+.openSubmissions{
+    border: 5px black solid;
+}
+
+.submissionFolders{
+    border: 5px green solid;
+    overflow: scroll;
+
+}
+
+.openFileHeader{
+    border: 5px blue solid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

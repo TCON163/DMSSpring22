@@ -123,7 +123,7 @@ export default function FileUploadPage(){
                 <br/>
                 <button onClick={download}>download</button>
 
-                <a href='http://localhost:8080/api/v1/file/1' download id="download">download 2</a>
+                <a href='http://localhost:8080/api/v1/file/2' download id="download">download 2</a>
 			</div>
 		</div>
 	);

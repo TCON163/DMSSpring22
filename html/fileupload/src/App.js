@@ -1,11 +1,22 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
 import './App.css';
-import FileUploadPage from './components/FileUploadPage'; 
+import CustomeSwitchRouter from './components/Router/CustomeSwitchRouter';
+
 
 function App() {
+  document.title = "DMS"
+
+useEffect(() => {
+  window.resizeTo(1000, 750)
+})
+
+
+
+
   return (
     <div className="App">
-      <FileUploadPage />
+ 
+      <CustomeSwitchRouter></CustomeSwitchRouter>
     </div>
   );
 }
