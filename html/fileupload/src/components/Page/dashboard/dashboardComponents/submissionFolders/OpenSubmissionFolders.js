@@ -35,7 +35,10 @@ export default function OpenSubmissionFolders(props) {
                 
                 <SubmissionBox  submission={sub} active={isActive(sub.id)} />
             </button>
-        )});}
+        )})
+        
+    
+    }
 
         return(<div></div>)
     }

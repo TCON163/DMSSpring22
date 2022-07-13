@@ -32,7 +32,7 @@ export default function SubmissionTreeGrid(props) {
         <div className="submissionFolders">
 
             Folder Tree for active Submission
-            <FolderTree subId={props.activeSub} updateFileId={updateFileId}></FolderTree>
+            <FolderTree subId={props.activeSub} updateFileId={updateFileId} fileId={props.fileId}> </FolderTree>
         </div>
     </div>
   )

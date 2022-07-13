@@ -20,14 +20,26 @@ export default function FolderTree(props) {
       props.updateFileId(id)
     }
 
-    
+
+    function isActive(id){
+      if(props.fileId ===id){
+        return "fileName-active"
+      }
+      return "fileName"
+    }
+
+
+
+
+  
    
   if(fileList !== undefined){
     return fileList.map(file=>{
-        return (<div className="fileLabel" key={file.id}>
-            <h5>{file.id} - {file.folder} - {file.subFolder}:</h5>
-            <button onClick={e=>clickFile(file.id)}><h6>{file.fileName}</h6></button>
-
+        return (<div className="fileNameBox" key={file.id}>
+            <p className="fileLabel" >{file.id} - {file.folder} - {file.subFolder}:</p>
+          
+            <p className={isActive(file.id)} onClick={e=>clickFile(file.id)}>{file.fileName}</p>
+            
         </div>)
     })
   }

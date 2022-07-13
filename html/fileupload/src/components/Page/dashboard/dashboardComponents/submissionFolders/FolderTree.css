@@ -1,3 +1,17 @@
-.fileLabel{
+
+
+
+.fileNameBox{
+    display: flex;
+  
+    
+    justify-content: center;
     
 }
+
+
+.fileName-active{
+    background-color: blue;
+    color: white;
+}
+

@@ -42,7 +42,9 @@ export default class File{
             this.setFiles()
         }
 
+        
         return this.list.filter(file => file.subId ===id)
+        
     }
 
 

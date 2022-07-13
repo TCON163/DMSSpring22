@@ -15,6 +15,8 @@ export default function DMSDashboard() {
 
     useEffect(()=>{
         console.log(`activeSubmission: ${activeSub}`)
+        // this set's the fileId to the fist file, in the new submission folder you switch to.
+        setFileId(File.getFiles(activeSub)[0].id)
     },[activeSub])
 
 
@@ -36,7 +38,7 @@ export default function DMSDashboard() {
 
   return (
     <div className="grid">
-        <SubmissionTreeGrid  activeSub={activeSub} handleActiveSub={handleActiveSub} handleFileId={handleFileId} />
+        <SubmissionTreeGrid  activeSub={activeSub} handleActiveSub={handleActiveSub} handleFileId={handleFileId} fileId={fileId}/>
       
        <div className="two gridColumn">
         PDF / Image Viewer
