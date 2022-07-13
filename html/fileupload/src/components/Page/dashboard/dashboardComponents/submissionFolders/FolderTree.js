@@ -6,11 +6,11 @@ export default function FolderTree(props) {
     
     const [fileList, setFileList] = useState(File.getFiles(props.subId))
 
-    console.log(`fileList: ${fileList}`)
+
 
     useEffect(()=>{
 
-      console.log(`active Folder Tree: ${props.subId}`)
+    
       setFileList(File.getFiles(props.subId))
     },[props.subId])
 

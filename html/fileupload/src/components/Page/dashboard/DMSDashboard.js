@@ -14,7 +14,7 @@ export default function DMSDashboard() {
     const [activeSub, setActiveSub] = useState(1);
 
     useEffect(()=>{
-        console.log(`activeSubmission: ${activeSub}`)
+        
         // this set's the fileId to the fist file, in the new submission folder you switch to.
         setFileId(File.getFiles(activeSub)[0].id)
     },[activeSub])
@@ -22,10 +22,7 @@ export default function DMSDashboard() {
 
     const [fileId, setFileId] = useState(1)
 
-    useEffect(()=>{
-        console.log(`File id: ${fileId}`);
-
-    },[fileId])
+  
    
     const handleActiveSub = (id)=>{
         setActiveSub(id)
