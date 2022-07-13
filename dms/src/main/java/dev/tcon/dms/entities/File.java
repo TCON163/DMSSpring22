@@ -18,6 +18,9 @@ public class File {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private Submission submission;
+
     @Column(name = "appFileName")
     private String appFileName;
 

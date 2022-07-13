@@ -6,39 +6,45 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Submission {
+public class Quote {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @ManyToOne
+    private Submission submission;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id",nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "ins_market_id", nullable = false)
+    private InsuranceMarket insuranceMarket;
 
-    @ManyToOne
-    private Agency agency;
-
+    @Column
+    private String policyNumber;
 
     @Enumerated(EnumType.STRING)
     private LineOfBusiness lineOfBusiness;
 
-    @OneToOne(mappedBy = "submission")
-    private Policy policy;
+    @Column
+    private Double premium;
 
-    @OneToMany
-    private Set<Quote> quotes = new HashSet<>();
+    @Column
+    private Double fees;
 
-    @OneToMany
-    private Set<File> files = new HashSet<>();
+    @Column
+    private Double taxes;
+
+    @Column
+    private Date effectiveDate;
+
+    @Column
+    private Date expirationDate;
 }

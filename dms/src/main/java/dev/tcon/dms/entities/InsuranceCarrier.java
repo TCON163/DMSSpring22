@@ -12,24 +12,17 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Customer {
-
+public class InsuranceCarrier {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @ManyToMany
-    private Set<Agency> agencies = new HashSet<>();
-
-    @OneToMany(mappedBy = "customer")
-    private Set<Submission> submissions = new HashSet<>();
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mail_address_id", referencedColumnName = "id")
     private Address mailAddress;
+
     @Column
     private Boolean sameMailingAndPhysicalAddress;
 
@@ -37,5 +30,7 @@ public class Customer {
     @JoinColumn(name = "physical_address_id", referencedColumnName = "id")
     private Address physicalAddress;
 
+    @OneToMany
+    private Set<InsuranceMarket> insuranceMarkets = new HashSet<>();
 
 }

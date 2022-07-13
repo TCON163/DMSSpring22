@@ -6,5 +6,5 @@ public enum EntityType {
     LimitedLiabilityCompany,
     Corporation,
     NonProfit,
-    
+
 }

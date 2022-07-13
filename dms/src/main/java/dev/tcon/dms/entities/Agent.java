@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Address {
+public class Agent {
 
     @Id
     @Column(name = "id")
@@ -18,20 +18,15 @@ public class Address {
     private Long id;
 
 
-    @Column
-    private String streetAddressOne;
+    @ManyToOne
+    @JoinColumn(name = "agency_id", nullable = false)
+    private Agency agency;
 
     @Column
-    private String streetAddressTwo;
+    private String agentsName;
+    @Column
+    private Long phoneNumber;
 
     @Column
-    private String city;
-
-    @Column
-    private String state;
-
-    @Column
-    private int zipCode;
-
-
+    private String email;
 }

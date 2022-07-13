@@ -1,16 +1,19 @@
 package dev.tcon.dms.entities;
 
+import dev.tcon.dms.enums.LineOfBusiness;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Address {
+public class InsuranceMarket {
 
     @Id
     @Column(name = "id")
@@ -18,20 +21,15 @@ public class Address {
     private Long id;
 
 
-    @Column
-    private String streetAddressOne;
+    @ManyToOne
+    @JoinColumn(name = "ins_carrier_id",nullable = false)
+    private InsuranceCarrier insuranceCarrier;
 
-    @Column
-    private String streetAddressTwo;
 
-    @Column
-    private String city;
 
-    @Column
-    private String state;
+
+
 
     @Column
-    private int zipCode;
-
-
+    private Boolean admitted;
 }
